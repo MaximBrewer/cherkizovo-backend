@@ -18,7 +18,7 @@ class ScoreController extends Controller
                 'name' => (string)$request->name,
                 'score' => (string)$request->score,
             ]);
-        } elseif ($score < (string)$request->score) {
+        } elseif ($score->score < (string)$request->score) {
             $score->update(['score' => (string)$request->score]);
         }
         event(new \App\Events\Refresh($score));
