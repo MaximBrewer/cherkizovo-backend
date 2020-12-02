@@ -3,9 +3,15 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeds\RolesTableSeeder;
+use Database\Seeds\UsersTableSeeder;
+use TCG\Voyager\Traits\Seedable;
 
 class DatabaseSeeder extends Seeder
 {
+    use Seedable;
+
+    protected $seedersPath = __DIR__.'/../seeds/';
     /**
      * Seed the application's database.
      *
@@ -13,6 +19,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->seed('RolesTableSeeder');
+        $this->seed('UsersTableSeeder');
     }
 }
