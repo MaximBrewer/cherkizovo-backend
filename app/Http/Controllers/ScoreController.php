@@ -10,7 +10,7 @@ class ScoreController extends Controller
     public function store(Request $request)
     {
 
-        $score = \App\Models\Score::where('user_id', (string)$request->user_id,)->first();
+        $score = \App\Models\Score::where('user_id', (string)$request->user_id)->first();
         if ($score < (string)$request->score) {
             \App\Models\Score::firstOrCreate([
                 'user_id' => (string)$request->user_id,
@@ -21,5 +21,11 @@ class ScoreController extends Controller
         }
         event(new \App\Events\Refresh($score));
         return $score;
+    }
+    //
+    public function get(Request $request)
+    {
+        $scores = \App\Models\Score::orderBy('score', 'desc')->limit(50)->get();
+        return $scores;
     }
 }

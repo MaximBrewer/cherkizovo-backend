@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/store', '\App\Http\Controllers\ScoreController@store');
+Route::get('/scores', '\App\Http\Controllers\ScoreController@get');
