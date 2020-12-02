@@ -16,5 +16,6 @@ class ScoreController extends Controller
             'score' => (string)$request->score,
         ]);
         event(new \App\Events\Refresh($score));
+        return $score;
     }
 }

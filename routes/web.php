@@ -14,7 +14,7 @@ use TCG\Voyager\Facades\Voyager;
 |
 */
 
-Route::post('/', '\App\Http\Controllers\SiteController@patch');
+Route::post('/', '\App\Http\Controllers\SiteController@patch')->middleware('cors');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
