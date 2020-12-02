@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ScoreController extends Controller
 {
     //
-    public function patch(Request $request)
+    public function store(Request $request)
     {
         $score = \App\Models\Score::firstOrCreate([
             'user_id' => (string)$request->user_id,
