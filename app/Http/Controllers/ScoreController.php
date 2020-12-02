@@ -11,13 +11,15 @@ class ScoreController extends Controller
     {
 
         $score = \App\Models\Score::where('user_id', (string)$request->user_id)->first();
-        if ($score < (string)$request->score) {
+        if (!$score) {
             \App\Models\Score::firstOrCreate([
                 'user_id' => (string)$request->user_id,
                 'avatar' => (string)$request->avatar,
                 'name' => (string)$request->name,
                 'score' => (string)$request->score,
             ]);
+        } elseif ($score < (string)$request->score) {
+            $score->update(['score' => (string)$request->score]);
         }
         event(new \App\Events\Refresh($score));
         return $score;
