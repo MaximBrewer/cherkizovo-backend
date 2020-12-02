@@ -14,7 +14,6 @@ use TCG\Voyager\Facades\Voyager;
 |
 */
 
-Route::post('/', '\App\Http\Controllers\SiteController@patch');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
