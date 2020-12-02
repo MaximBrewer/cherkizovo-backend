@@ -15,6 +15,8 @@ class TrustHosts extends Middleware
     {
         return [
             $this->allSubdomainsOfApplicationUrl(),
+            'https://cherkizovo.fun:10888',
+            'cherkizovo.fun:10888'
         ];
     }
 }
